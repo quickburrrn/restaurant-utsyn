@@ -1,20 +1,20 @@
 #development
 
-FROM node:18-alpine
+# FROM node:18-alpine
 
-ENV NODE_ENV development
+# ENV NODE_ENV development
 
-WORKDIR /restaurnat-utsyn
+# WORKDIR /restaurnat-utsyn
 
-COPY ./package*.json /restaurnat-utsyn
+# COPY ./package*.json /restaurnat-utsyn
 
-RUN npm install
+# RUN npm install
 
-EXPOSE 3000
+# EXPOSE 3000
 
-COPY . .
+# COPY . .
 
-CMD [ "npm", "start"]
+# CMD [ "npm", "start"]
 
 #for å kjøre skriv docker run -p 3000:3000 andrehan/restaurant-utsyn
 
@@ -22,25 +22,25 @@ CMD [ "npm", "start"]
 #production
 
 
-#FROM node:18-alpine
+FROM node:18-alpine
 
-#ENV NODE_ENV production
+ENV NODE_ENV production
 
-#WORKDIR /restaurnat-utsyn
+WORKDIR /restaurnat-utsyn
 
-#COPY ./package*.json /restaurnat-utsyn
-#RUN npm install
+COPY ./package*.json /restaurnat-utsyn
+RUN npm install
 
-#COPY . .
+COPY . .
 
-#RUN npm run build
+RUN npm run build
 
-#FROM nginx:alpine
+FROM nginx:alpine
 
-#RUN rm -rf /usr/share/nginx/html/*
+RUN rm -rf /usr/share/nginx/html/*
 
-#COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /restaurnat-utsyn/build /usr/share/nginx/html
 
-#EXPOSE 3000
+EXPOSE 3000
 
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
