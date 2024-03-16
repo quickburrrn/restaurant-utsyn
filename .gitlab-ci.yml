@@ -1,22 +1,20 @@
+image: node:20
+
 stages:
   - build
   - deploy
 
-build-job: 
-  stage: build
-  script:
-    - echo "Building image..."
-    - docker build -t restaurant-utkast:latest .
-    - docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - docker tag restaurant-utkast:latest ${{ secrets.DOCKER_REGISTIRY}}
-    - docker push ${{ secrets.DOCKER_REGISTRY_URL}}
-    - docker tag
-    - echo "Compile complete."
+variables:
+  NODE_ENV: production
 
-deploy-job:
+build:
+  stage: build
+  scripts:
+    - npm install
+    - npm run build
+    - ls
+
+deploy:
   stage: deploy
-  environment: production
-  script:
-    - echo "Deploying application..."
-    - docker run -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_URL}}:latest
-    - echo "Application successfully deployed."
+  scripts:
+    - hello world

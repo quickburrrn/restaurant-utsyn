@@ -1,0 +1,22 @@
+stages:
+  - build
+  - deploy
+
+build-job: 
+  stage: build
+  script:
+    - echo "Building image..."
+    - docker build -t restaurant-utkast:latest .
+    - docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - docker tag restaurant-utkast:latest ${{ secrets.DOCKER_REGISTIRY}}
+    - docker push ${{ secrets.DOCKER_REGISTRY_URL}}
+    - docker tag
+    - echo "Compile complete."
+
+deploy-job:
+  stage: deploy
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - docker run -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_URL}}:latest
+    - echo "Application successfully deployed."
