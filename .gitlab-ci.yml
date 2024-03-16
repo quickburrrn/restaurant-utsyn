@@ -14,5 +14,5 @@ build:
 deploy:
   stage: deploy
   script:
-    - sudo systemctl status nginx
-    - sudo systemctl restart nginx
+    - systemctl status nginx
+    - systemctl restart nginx
