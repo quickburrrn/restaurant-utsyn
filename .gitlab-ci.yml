@@ -4,13 +4,13 @@ stages:
 
 build:
   stage: build
-  scripts:
+  script:
     - npm install
     - npm run build
     - ls
 
 deploy:
   stage: deploy
-  scripts:
+  script:
     - status nginx
     - restart nginx
