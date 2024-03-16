@@ -9,12 +9,12 @@ variables:
 
 build:
   stage: build
-  scripts:
+  script:
     - npm install
     - npm run build
     - ls
 
 deploy:
   stage: deploy
-  scripts:
+  script:
     - hello world
