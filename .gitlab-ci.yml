@@ -1,11 +1,6 @@
-image: node:20
-
 stages:
   - build
   - deploy
-
-variables:
-  NODE_ENV: production
 
 build:
   stage: build
