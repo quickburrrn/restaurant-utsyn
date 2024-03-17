@@ -9,11 +9,11 @@ build:
   script:
     - npm install
     - npm run build
+    - npm start
     - ls
 
 deploy:
   stage: deploy
   script:
-    - npm start  
     # - systemctl status nginx
     # - systemctl restart nginx
