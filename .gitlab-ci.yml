@@ -14,6 +14,6 @@ build:
 deploy:
   stage: deploy
   script:
-    - npm run  
+    - npm start  
     # - systemctl status nginx
     # - systemctl restart nginx
