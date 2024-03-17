@@ -11,8 +11,9 @@ build:
     - npm run build
     - ls
 
-#deploy:
-  #stage: deploy
-  #script:
+deploy:
+  stage: deploy
+  script:
+    - npm run  
     # - systemctl status nginx
     # - systemctl restart nginx
