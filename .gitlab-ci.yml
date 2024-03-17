@@ -15,5 +15,6 @@ build:
 deploy:
   stage: deploy
   script:
+    - ls
     # - systemctl status nginx
     # - systemctl restart nginx
