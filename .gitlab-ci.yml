@@ -18,7 +18,8 @@ deploy:
     - master
   script:
     - apt-get update && apt-get install -y sshpass
-    - sshpass -p "$SSH_PASS" scp -r ./build/* andre@172.16.100.46
+    - ls
+    - sshpass -p "$SSH_PASS" scp -r ./build andre@172.16.100.46
     #- ssh andre@172.16.100.46 "sudo systemctl status nginx"
     #- ssh andre@172.16.100.46 "sudo systemctl restart nginx"
 
