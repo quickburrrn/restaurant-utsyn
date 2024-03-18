@@ -7,14 +7,10 @@ stages:
 build:
   stage: build
   script:
-    - npm install
-    - npm run build
-    - npm start
-    - ls
+    - npm install -g serve
+    - serve -s build -l 3000
 
 deploy:
   stage: deploy
   script:
     - ls
-    # - systemctl status nginx
-    # - systemctl restart nginx
