@@ -12,5 +12,11 @@ build:
 
 deploy:
   stage: deploy
+  only:
+    - master
   script:
-    - ls
+    - ssh andre@Etpassord123:172.16.100.46
+    - scp -r ./build/* andre@Etpassord123:172.16.100.46
+    - sudo systemctl status nginx
+    - sudo systemctl restart nginx
+
