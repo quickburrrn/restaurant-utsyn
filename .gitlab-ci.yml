@@ -7,8 +7,8 @@ stages:
 build:
   stage: build
   script:
-    - npm install -g serve
-    - serve -s build -l 3000
+    - npm run build
+
 
 deploy:
   stage: deploy
