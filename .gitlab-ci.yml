@@ -16,8 +16,8 @@ deploy:
   only:
     - master
   script:
-    - ssh andre@172.16.100.46
-    - scp -r ./build/* andre@172.16.100.46
-    - ssh andre@172.16.100.46 "sudo systemctl status nginx"
-    - ssh andre@172.16.100.46 "sudo systemctl restart nginx"
+    - apt-get install -y sshpass
+    - sshpass -p "$SSH_PASS" scp -r ./build/* andre@172.16.100.46
+    #- ssh andre@172.16.100.46 "sudo systemctl status nginx"
+    #- ssh andre@172.16.100.46 "sudo systemctl restart nginx"
 
