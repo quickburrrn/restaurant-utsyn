@@ -12,7 +12,7 @@ const Header = () =>
                     <img src={tangenlogo} alt="tangen's vakre logo" width="100%" height="100%"/>
                 </div>
                 <div class="col">
-                    <h2>hello</h2>
+                    <h2>Login</h2>
                 </div>
             </div>
             <div class="row">

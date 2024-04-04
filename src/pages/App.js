@@ -13,19 +13,29 @@ function App() {
   const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
-    <div>
+    <div class="container text-center">
       <Navbar />
 
-      <ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>
-      <TestButton buttonPressed={() => setAlertVisibility(true)}> Dett er en smidig knapp</TestButton>
+      <p>
+        Vi serverer en smakfull 2-rettersmeny på torsdager og en herlig lunsjtallerken m/ dessert på fredager
+      </p>
+      
+      <TestButton className="container-fluid" color="primary">
+        Book bord
+      </TestButton>
+
+      {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
+
+      {/* <TestButton buttonPressed={() => setAlertVisibility(true)}> Dett er en smidig knapp</TestButton>
       {alertVisible && <Alert onClose={() => setAlertVisibility(false)}>
         Hello <b>World</b>
-      </Alert>}
-      <Link to="/meny">
+      </Alert>} */}
+      
+      {/* <Link to="/meny">
         <TestButton color="primary">
             Gå til meny
         </TestButton>
-      </Link>
+      </Link> */}
 
     </div>
   );
