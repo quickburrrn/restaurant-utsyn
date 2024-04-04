@@ -13,14 +13,30 @@ function App() {
   const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
-    <div class="container text-center">
+    <div className="container text-left">
       <Navbar />
+
+      <div classNAme="container"></div>
 
       <p>
         Vi serverer en smakfull 2-rettersmeny på torsdager og en herlig lunsjtallerken m/ dessert på fredager
       </p>
-      
-      <TestButton className="container-fluid" color="primary">
+
+      <h4>Åpningstider</h4>
+
+      <p>
+      Torsdag kl.12-14
+      Fredag kl.11-13
+      </p>
+
+      <h4>Åpningstider</h4>
+      <p>Tangen 21, 1.etg</p>
+
+      <h4>Pris</h4>
+      <p>KR 125, - for hovedrett</p>
+      <p>KR 35, - for dessert</p>
+
+      <TestButton className="container text-center" color="primary">
         Book bord
       </TestButton>
 
