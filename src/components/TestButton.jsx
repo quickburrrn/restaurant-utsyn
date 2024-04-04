@@ -6,7 +6,7 @@ const TestButton = (Props) => {
   return (
     <button
       type="button"
-      className={"btn btn-" + color}
+      className={"btn btn-" + color + " d-grid gap-2 col-5 d-md-block container text-centered"}
       onClick={() => {
         buttonPressed();
       }}

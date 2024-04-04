@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-function Meny() {
+function Contact() {
   return (
     <div>
       <Navbar />
@@ -9,4 +9,4 @@ function Meny() {
   );
 }
 
-export default Meny;
+export default Contact;

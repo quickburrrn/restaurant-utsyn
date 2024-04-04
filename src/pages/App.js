@@ -14,31 +14,38 @@ function App() {
 
   return (
     <div className="container text-left">
-      <Navbar />
 
-      <div classNAme="container"></div>
+      <div className="col mb-2">
+        <Navbar activepage="Main Page"></Navbar>
+      </div>
 
-      <p>
-        Vi serverer en smakfull 2-rettersmeny på torsdager og en herlig lunsjtallerken m/ dessert på fredager
-      </p>
+      <div className="col">
+        <p>
+          Vi serverer en smakfull 2-rettersmeny på torsdager og en herlig lunsjtallerken m/ dessert på fredager
+        </p>
 
-      <h4>Åpningstider</h4>
+        <h4 className="fw-bold">Åpningstider</h4>
 
-      <p>
-      Torsdag kl.12-14
-      Fredag kl.11-13
-      </p>
+        <p>
+        Torsdag kl.12-14
+        Fredag kl.11-13
+        </p>
 
-      <h4>Åpningstider</h4>
-      <p>Tangen 21, 1.etg</p>
+        <h4 className="fw-bold">Sted</h4>
+        
+        <p>Tangen 21, 1.etg</p>
 
-      <h4>Pris</h4>
-      <p>KR 125, - for hovedrett</p>
-      <p>KR 35, - for dessert</p>
-
-      <TestButton className="container text-center" color="primary">
-        Book bord
-      </TestButton>
+        <h4 className="fw-bold">Pris</h4>
+        
+        <p>KR 125, - for hovedrett</p>
+        <p>KR 35, - for dessert</p>
+      </div>
+      
+      <div className="col p-5 ">
+        <TestButton color="primary">
+          Book bord
+        </TestButton>
+      </div>
 
       {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
 
