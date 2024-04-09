@@ -21,4 +21,5 @@ npm start
 ### hvis noe failer
 ```
 npm install react-router-dom --force
+npm install axios --force
 ```

@@ -2,15 +2,22 @@ import Alert from "../components/Alert";
 import ListGroup from "../components/ListGroup";
 import TestButton from "../components/TestButton";
 import Navbar from "../components/Navbar";
-import { useState } from "react"
-import { Link } from "react-router-dom"
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function App() {
 
   const handleSelectItem = (item) => {}
 
   const [alertVisible, setAlertVisibility] = useState(false);
+
+  //exempel på å adde bord
+  // axios.post('http://localhost:8001/bord', {
+  //   BordID: '8',
+  //   Kapasitet: '3'})
+  //   .then(res => console.log(res))
+  //   .catch(err => console.log(err));
 
   return (
     <div className="container text-left">
