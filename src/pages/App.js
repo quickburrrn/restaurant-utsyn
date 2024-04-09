@@ -8,16 +8,11 @@ import axios from 'axios';
 
 function App() {
 
-  const handleSelectItem = (item) => {}
+  const addBoking = (item) => {
+    
+  }
 
   const [alertVisible, setAlertVisibility] = useState(false);
-
-  //exempel på å adde bord
-  // axios.post('http://localhost:8001/bord', {
-  //   BordID: '8',
-  //   Kapasitet: '3'})
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
 
   return (
     <div className="container text-left">
@@ -53,6 +48,17 @@ function App() {
           Book bord
         </TestButton>
       </div>
+
+      <TestButton color="info" buttonPressed={() => 
+        {
+          [10].map((item, index) => (
+            axios.post('http://localhost:8001/bord', {
+              BordID: index,
+              Kapasitet: '3'})
+              .then(res => console.log("res"))
+              .catch(err => console.log("err")))
+          );
+        }}> Legg 10 bord til databasen (temp) </TestButton>
 
       {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
 
