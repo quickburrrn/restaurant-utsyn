@@ -52,7 +52,7 @@ function App() {
 
       
       {/*Eksempel på post*/}
-      <TestButton color="info" buttonPressed={() => 
+      {/* <TestButton color="info" buttonPressed={() => 
         {
           [10].map((item, index) => (
             axios.post('http://localhost:8001/bord', {
@@ -61,7 +61,7 @@ function App() {
               .then(res => console.log("res"))
               .catch(err => console.log("err")))
           );
-        }}> Legg 10 bord til databasen (temp) </TestButton>
+        }}> Legg 10 bord til databasen (temp) </TestButton> */}
 
       {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
 
