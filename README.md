@@ -22,4 +22,5 @@ npm start
 ```
 npm install react-router-dom --force
 npm install axios --force
+npm install react-calendar --force
 ```
