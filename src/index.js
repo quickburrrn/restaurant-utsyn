@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './pages/App';
 import Meny from './pages/Meny';
+import Dato from './pages/Dato';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: '/meny',
     element: <Meny />
+  },
+  {
+    path: '/dato',
+    element: <Dato />
   }
 ]);
 

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 function NotFoundPage() {
   return (
-    <div className="">
-      <h1>Du er brukuelig</h1>
-      <Link to="/">Trykk her</Link>
+    <div className="container text-center">
+      <h1>Beklager det skjedde noe feil</h1>
+      <h1><Link to="/">Trykk her</Link></h1>
     </div>
   );
 }

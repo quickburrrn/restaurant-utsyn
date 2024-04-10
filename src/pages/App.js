@@ -42,9 +42,11 @@ function App() {
       </div>
       
       <div className="col p-5 ">
-        <TestButton color="primary">
-          Book bord
-        </TestButton>
+        <Link to="/Dato">
+          <TestButton color="primary">
+            Book bord
+          </TestButton>
+        </Link>
       </div>
 
       {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
