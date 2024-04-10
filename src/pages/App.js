@@ -2,19 +2,20 @@ import Alert from "../components/Alert";
 import ListGroup from "../components/ListGroup";
 import TestButton from "../components/TestButton";
 import Navbar from "../components/Navbar";
-import { useState } from "react"
-import { Link } from "react-router-dom"
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function App() {
 
-  const handleSelectItem = (item) => {}
+  const addBoking = (item) => {
+    
+  }
 
   const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
     <div className="container text-left">
-
       <div className="col mb-2">
         <Navbar activepage="Main Page"></Navbar>
       </div>
@@ -48,6 +49,19 @@ function App() {
           </TestButton>
         </Link>
       </div>
+
+      
+      {/*Eksempel på post*/}
+      {/* <TestButton color="info" buttonPressed={() => 
+        {
+          [10].map((item, index) => (
+            axios.post('http://localhost:8001/bord', {
+              BordID: index,
+              Kapasitet: '3'})
+              .then(res => console.log("res"))
+              .catch(err => console.log("err")))
+          );
+        }}> Legg 10 bord til databasen (temp) </TestButton> */}
 
       {/*<ListGroup header="Hello world" items={["hello", "world"]} onSelectItem={handleSelectItem}/>*/}
 
