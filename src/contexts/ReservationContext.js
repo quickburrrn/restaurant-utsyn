@@ -1,4 +1,3 @@
-import React, { Children } from "react"
 import { createContext , useContext, useState} from "react";
 
 const ReservationContex = createContext({});
@@ -19,11 +18,12 @@ export const ReservationProvider = ({ children }) =>
 
     const handleSubmit = () => 
     {
-        console.log('submitting answers:', answers);
-    }
+        console.log("hello?");
+        //console.log('submitting answers:', info);
+    };
 
     return (
-        <ReservationContex.Provider value={{ answers, handleReservationChange, handleSubmit}}>
+        <ReservationContex.Provider value={{ info, handleReservationChange, handleSubmit}}>
             {children}
         </ReservationContex.Provider>
     );
