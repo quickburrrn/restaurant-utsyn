@@ -6,6 +6,7 @@ import Date from './pages/Date';
 import App from './pages/App';
 import LandingPage from './pages/landingPage';
 import Time from './pages/Time';
+import Persons from './pages/Persons';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'tid',
         element: <Time />
+      },
+      {
+        path: 'personer',
+        element: <Persons />
       }
     ]
   },

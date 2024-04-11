@@ -8,14 +8,14 @@ import axios from 'axios';
 
 function App() {
   const [count, setCount] = useState("00:00:00");
-  
-  const increment = () => setCount(1);
+  const [ankomst, setAnkomst] = useState("00:00");
+  const [personer, SetPersoner] = useState(0)
 
   return (
     <div>
       <Navbar />
-      <div id="detail">
-        <Outlet context={[count, setCount]}/>
+      <div>
+        <Outlet context={[[count, setCount], [ankomst, setAnkomst], [personer, SetPersoner]]}/>
       </div>
     </div>
   );

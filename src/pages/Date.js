@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function Date()
 {
-    const [count, setCount] = useOutletContext();
+    const [count, setCount] = useOutletContext()[0];
 
     const [dateActive, setDateActive] = useState(false);
 
@@ -29,7 +29,7 @@ function Date()
 
             <div className="col mb-2">
                 {dateActive ? 
-                <Link to="tid"><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
+                <Link to={`../tid`}><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
                  : 
                 <TestButton color="secondary disabled">Veld Tidpunk</TestButton>}
             </div>
