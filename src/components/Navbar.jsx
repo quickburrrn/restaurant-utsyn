@@ -6,7 +6,6 @@ import tangenlogo from '../images/tangenlogo.png';
 const Header = (Props) => 
 {
     const {activepage} = Props;
-    console.log(activepage)
 
     return(
         <div className="container text-center">

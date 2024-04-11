@@ -1,11 +1,5 @@
 import { useState } from "react";
 
-// const Props = {
-//   items: [],
-//   heading: '',
-//   onSelectItem: function (item = '') { return }
-// };
-
 function ListGroup(Props) {
   // Destructure props
   const {items, heading, onSelectItem} = Props
