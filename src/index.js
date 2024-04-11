@@ -7,6 +7,8 @@ import App from './pages/App';
 import LandingPage from './pages/landingPage';
 import Time from './pages/Time';
 import Persons from './pages/Persons';
+import Information from './pages/Information';
+import Kvitering from './pages/Kvitering';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: 'personer',
         element: <Persons />
+      },
+      {
+        path: 'informasjon',
+        element: <Information />
+      },
+      {
+        path: 'kvitering',
+        element: <Kvitering />
       }
     ]
   },

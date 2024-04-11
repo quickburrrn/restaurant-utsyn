@@ -20,7 +20,7 @@ function Time ()
         <div>
             <ListGroup items={["12.00", "13.00", "14.00", "14.00", "15.00", "16.00"]} heading="Velg ankomst punkt" onSelectItem={timeSelected} />
             {timeActive ? 
-                <Link to={`../tid`}><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
+                <Link to={`../personer`}><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
                  : 
                 <TestButton color="secondary disabled">Veld Tidpunk</TestButton>}
         </div>

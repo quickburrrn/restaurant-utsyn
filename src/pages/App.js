@@ -9,13 +9,16 @@ import axios from 'axios';
 function App() {
   const [count, setCount] = useState("00:00:00");
   const [ankomst, setAnkomst] = useState("00:00");
-  const [personer, SetPersoner] = useState(0)
+  const [personer, setPersoner] = useState(0)
+  const [navn, setNavn] = useState("None None")
+  const [telefonnnumer, setTelefonnnumer] = useState(12345678)
+  const [email, setEmail] = useState("None")
 
   return (
     <div>
       <Navbar />
       <div>
-        <Outlet context={[[count, setCount], [ankomst, setAnkomst], [personer, SetPersoner]]}/>
+        <Outlet context={[[count, setCount] ,[ankomst, setAnkomst], [personer, setPersoner], [navn, setNavn], [telefonnnumer, setTelefonnnumer], [email, setEmail]]}/>
       </div>
     </div>
   );
