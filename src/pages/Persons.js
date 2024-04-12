@@ -10,9 +10,9 @@ function Persons ()
 
     const [personActive, setPersonActive] = useState(false);
 
-    const personSelected = () =>
+    const personSelected = (item) =>
     {
-        SetPersoner(3)
+        SetPersoner(parseInt(item))
         setPersonActive(true)
     }
 

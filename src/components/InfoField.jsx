@@ -1,11 +1,13 @@
 import React from "react";
 
-const InfoField = (props) => {
+const InfoField = (Props) => {
+    const {children} = Props;
+    
     return(
-        <div className="">
+        <div>
             <h1>{children}</h1>
         </div>
     );
 }
 
-export default Alert
+export default InfoField

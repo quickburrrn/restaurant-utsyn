@@ -13,12 +13,13 @@ function App() {
   const [navn, setNavn] = useState("None None")
   const [telefonnnumer, setTelefonnnumer] = useState(12345678)
   const [email, setEmail] = useState("None")
+  const [extra, setExtra] = useState("")
 
   return (
     <div>
       <Navbar />
       <div>
-        <Outlet context={[[count, setCount] ,[ankomst, setAnkomst], [personer, setPersoner], [navn, setNavn], [telefonnnumer, setTelefonnnumer], [email, setEmail]]}/>
+        <Outlet context={[[count, setCount] ,[ankomst, setAnkomst], [personer, setPersoner], [navn, setNavn], [telefonnnumer, setTelefonnnumer], [email, setEmail], [extra, setExtra]]}/>
       </div>
     </div>
   );

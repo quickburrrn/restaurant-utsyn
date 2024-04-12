@@ -10,9 +10,9 @@ function Time ()
 
     const [timeActive, setTimeActive] = useState(false);
 
-    const timeSelected = () =>
+    const timeSelected = (item) =>
     {
-        setAnkomst("12:00");
+        setAnkomst(item);
         setTimeActive(true);
     };
 
