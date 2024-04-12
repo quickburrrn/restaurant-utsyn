@@ -23,14 +23,17 @@ const Header = (Props) =>
             <div className="row">
                 <ul className="nav justify-content-center nav-underline">
                     <li className="nav-item">
-                        <Link to="/meny" className={"nav-link " + ("Main Page" === activepage ? "active" : "")} aria-current="page">Main Page</Link>
+                        <p>Hei</p>
+                        {/* <Link to="/" className={"nav-link " + ("Main Page" === activepage ? "active" : "")} aria-current="page">Main Page</Link> */}
                         
                     </li>
                     <li className="nav-item">
-                        <Link to="/meny" className={"nav-link " + ("Main Page" === activepage) && "active"} aria-current="page">Meny</Link>
+                        <p>Hei</p>
+                        {/* <Link to="/" className={"nav-link " + ("Main Page" === activepage) && "active"} aria-current="page">Meny</Link> */}
                     </li>
                     <li className="nav-item">
-                        <Link to="/meny" className={"nav-link" + ("Main Page" === activepage) && "active"} aria-current="page">Kontakt</Link>
+                        <p>Hei</p>
+                        {/* <Link to="/" className={"nav-link" + ("Main Page" === activepage) && "active"} aria-current="page">Kontakt</Link> */}
                     </li>
                 </ul>
             </div>
