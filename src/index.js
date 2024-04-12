@@ -1,17 +1,17 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'bootstrap/dist/css/bootstrap.css';
-import Meny from './pages/Meny';
-import Date from './pages/Date';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './pages/App';
-import LandingPage from './pages/landingPage';
-import Time from './pages/Time';
-import Persons from './pages/Persons';
+import Date from './pages/Date';
 import Information from './pages/Information';
 import Kvitering from './pages/Kvitering';
-import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import LandingPage from './pages/landingPage';
+import Meny from './pages/Meny';
 import NotFoundPage from './pages/NotFoundPage';
+import Persons from './pages/Persons';
+import Time from './pages/Time';
+import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Meny from "../pages/Meny";
 import tangenlogo from '../images/tangenlogo.png';
 
 const Header = (Props) => 
@@ -18,21 +17,24 @@ const Header = (Props) =>
                 </div>
             </div>
             <div className="row">
-                <h1>Resturant-Utsyn</h1>
+                <h1 className="display-2 justify-content-center text-secondary">Resturant-Utsyn</h1>
             </div>
             <div className="row">
-                <ul className="nav justify-content-center nav-underline">
+                <ul className="nav nav-underline justify-content-center">
                     <li className="nav-item">
-                        <p>Hei</p>
+                        <Link class="nav-link" aria-current="page" to=''>Reserver bord</Link>
+                        {/* <p>Hei</p> */}
                         {/* <Link to="/" className={"nav-link " + ("Main Page" === activepage ? "active" : "")} aria-current="page">Main Page</Link> */}
                         
                     </li>
                     <li className="nav-item">
-                        <p>Hei</p>
+                        <Link class="nav-link" to='meny'>Menu</Link>
+                        {/* <p>Hei</p> */}
                         {/* <Link to="/" className={"nav-link " + ("Main Page" === activepage) && "active"} aria-current="page">Meny</Link> */}
                     </li>
                     <li className="nav-item">
-                        <p>Hei</p>
+                        <Link class="nav-link disabled" to=''>Kontakt</Link>
+                        {/* <p>Hei</p> */}
                         {/* <Link to="/" className={"nav-link" + ("Main Page" === activepage) && "active"} aria-current="page">Kontakt</Link> */}
                     </li>
                 </ul>
