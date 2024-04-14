@@ -20,7 +20,5 @@ npm start
 
 ### hvis noe failer
 ```
-npm install react-router-dom --force
-npm install axios --force
-npm install react-calendar --force
+npm install react-router-dom axios react-calendar --force
 ```

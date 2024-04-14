@@ -30,7 +30,7 @@ function landingPage() {
       <div className="col p-5 ">
         <Link to={`dato`}>
           <TestButton color="primary">
-            Book bord
+            Velg dato
           </TestButton>
         </Link>
       </div>
