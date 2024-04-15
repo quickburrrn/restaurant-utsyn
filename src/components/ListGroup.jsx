@@ -8,12 +8,12 @@ function ListGroup(Props) {
 
   return (
     <>
-      <h1>{heading}</h1>
+      <h1 className="text-center">{heading}</h1>
       {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
+      <ul className="list-group text-center">
         {items.map((item, index) => (
           <li
-            className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
+            className={(selectedIndex === index ? 'list-group-item active' : 'list-group-item') + " py-3"}
             key={index}
             onClick={() => {
               setSelectedIndex(index);
