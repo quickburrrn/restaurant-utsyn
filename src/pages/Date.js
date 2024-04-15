@@ -11,12 +11,18 @@ function Date()
 
     const [dateActive, setDateActive] = useState(false);
 
+    const [selectIndex, setSelectedIndex] = useState(-1);
+
+    const [selectAmountIndex, setselectAmountIndex] = useState(-1);
+
     const setDay = (value) => 
     {
         setDateActive(true);
         const dato = `${value.getDate()}-${value.getMonth()}-${value.getFullYear()}`;
         setCount(dato);
     };
+
+
     return (
         <div className="container text-center">
             {/* <div className="col mb-2" style={{display: "grid", placeItems: "center"}}>
@@ -36,7 +42,11 @@ function Date()
 
             <ul className="list-group list-group-flush">
                 {[...Array(11).keys()].map((item, index) => (
-                    <li className="list-group-item">
+                    <li className={selectIndex === index ? 'list-group-item' : 'list-group-item'}
+                        onClick={() => {
+                            setSelectedIndex(index);    
+                        }}
+                    >
                         <div class="row align-items-center">
                             <div class="col">
                                 <h1 className="display-2"><b>{index}</b></h1>
@@ -46,14 +56,24 @@ function Date()
                                 <h1 className="ps-5">Reserver Bord Denne Dagen</h1>
                             </div>
                             <div class="col">
+                        </div>
 
-                            </div>
-                            
-                        </div>
+                        {selectIndex===index && 
                         <div>
-                            hei
+                            <h1 className="display-3 pb-5">Velg antall folk</h1>
+                            <div className="d-flex justify-content-evenly btn-group align-items-center " role="group" arial-label="Basic radio button group">
+                                {[...Array(11).keys()].map((item, index) => (
+                                    <div>
+                                        <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off"></input>
+                                        <label class="btn btn-outline-primary" for={"btnradio" + index}>{index}</label>
+                                    </div>
+                                ))}
+                                
+                            </div>
                         </div>
-                           
+                        }
+                            
+                        </div>                           
                     </li>
                 ))}
             </ul>
