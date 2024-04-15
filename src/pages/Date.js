@@ -38,7 +38,7 @@ function Date()
                 <Link to={`../tid`}><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
                  : 
                 <TestButton color="secondary disabled">Veld Tidpunk</TestButton>}
-            </div> */}
+            </div> */} 
 
             <ul className="list-group list-group-flush">
                 {[...Array(11).keys()].map((item, index) => (
