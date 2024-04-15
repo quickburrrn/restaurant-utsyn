@@ -44,7 +44,11 @@ function Date()
                 {[...Array(11).keys()].map((item, index) => (
                     <li className={selectIndex === index ? 'list-group-item' : 'list-group-item'}
                         onClick={() => {
-                            setSelectedIndex(index);    
+                            setSelectedIndex(index);
+                            if(selectIndex!==index)
+                            {
+                                setselectAmountIndex(-1);
+                            }
                         }}
                     >
                         <div class="row align-items-center">
@@ -64,12 +68,15 @@ function Date()
                             <div className="d-flex justify-content-evenly btn-group align-items-center " role="group" arial-label="Basic radio button group">
                                 {[...Array(11).keys()].map((item, index) => (
                                     <div>
-                                        <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off"></input>
+                                        <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off" 
+                                            onClick={() => {
+                                                setselectAmountIndex(index);
+                                            }}></input>
                                         <label class="btn btn-outline-primary" for={"btnradio" + index}>{index}</label>
                                     </div>
                                 ))}
-                                
                             </div>
+                            <button type="button" className={(selectAmountIndex !== -1 ? 'btn btn-primary' : 'btn btn-secondary') + " mt-5 px-5 py-2"}><h4><b>Reserver bord</b></h4></button>
                         </div>
                         }
                             
