@@ -57,26 +57,29 @@ function Date()
                                 <h4 className="">Tirsdag</h4>
                             </div>
                             <div class="col-8">
-                                <h1 className="ps-5">Reserver Bord Denne Dagen</h1>
+                                <h1 className="ps-5">Masse ledige bord</h1>
                             </div>
                             <div class="col">
                         </div>
 
                         {selectIndex===index && 
                         <div>
-                            <h1 className="display-3 pb-5">Velg antall folk</h1>
+                            <h1 className="display-3 pb-5">Velg antall personer</h1>
                             <div className="d-flex justify-content-evenly btn-group align-items-center " role="group" arial-label="Basic radio button group">
                                 {[...Array(11).keys()].map((item, index) => (
                                     <div>
                                         <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off" 
                                             onClick={() => {
                                                 setselectAmountIndex(index);
+                                                setCount(index)
                                             }}></input>
-                                        <label class="btn btn-outline-primary" for={"btnradio" + index}>{index}</label>
+                                        <label class="btn btn-outline-primary btn-lg" for={"btnradio" + index}>{index}</label>
                                     </div>
                                 ))}
                             </div>
-                            <button type="button" className={(selectAmountIndex !== -1 ? 'btn btn-primary' : 'btn btn-secondary') + " mt-5 px-5 py-2"}><h4><b>Reserver bord</b></h4></button>
+                            <Link to={`../informasjon`}><button type="button" className={(selectAmountIndex !== -1 ? 'btn btn-primary' : 'btn btn-secondary') + " mt-5 px-5 py-2"}><h4><b>
+                                {(selectAmountIndex !== -1 ? `Reserver bord til ${selectAmountIndex} presoner` : 'Reserver')}
+                                </b></h4></button></Link>
                         </div>
                         }
                             
