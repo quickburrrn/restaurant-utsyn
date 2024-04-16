@@ -18,17 +18,16 @@ function Information()
     {
         const fullnavn = navn.split(' ');
 
-        axios.post('http://localhost:8001/reservasjon',
+        axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
-            Dato: count,
-            Antall_gjester: personer,
+            Dato: `2024-04-${count}`,
             Fornavn: fullnavn[0],
             Etternavn: `${fullnavn.length>0 ? "" : fullnavn[1]}`,
             Telefonnummer: telefonnnumer,
             Epost: email,
             ExtraInfo: extra
         })
-        .then(res => console.log(fullnavn[0]))
+        .then(res => axios.get('https://restaurant-utsyn-api.vercel.app/reservasjoner').then(function (responce){console.log(responce.data)}))
         .catch(err => console.log("err"));
 ;
 
