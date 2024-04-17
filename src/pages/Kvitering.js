@@ -16,7 +16,7 @@ function Kvitering()
             <ul className="list-group">
                 {useOutletContext().map(([item, setItem], index) =>
                 (
-                    <li className="mb-2">
+                    <li className="mb-2" key={index}>
                         <h3 className="display-5"><b>{List[index]}</b></h3>
                         <h3 className="display-6">{item}</h3>
                     </li>

@@ -45,6 +45,7 @@ function VelgDate()
             <ul className="list-group list-group-flush">
                 {[...Array(11).keys()].map((item, index) => (
                     <li className={selectIndex === index ? 'list-group-item' : 'list-group-item'}
+                        key={index}
                         onClick={() => {
                             setSelectedIndex(index);
                             if(selectIndex!==index)
@@ -53,15 +54,15 @@ function VelgDate()
                             }
                         }}
                     >
-                        <div class="row align-items-center">
-                            <div class="col">
+                        <div className="row align-items-center">
+                            <div className="col">
                                 <h1 className="display-2"><b>{(new Date(new Date().getTime()+index*86400000)).getDate()}</b></h1>
                                 <h4 className="">Tirsdag</h4>
                             </div>
-                            <div class="col-8">
+                            <div className="col-8">
                                 <h1 className="ps-5">Masse ledige bord</h1>
                             </div>
-                            <div class="col">
+                            <div className="col">
                         </div>
 
                         {selectIndex===index && 
@@ -69,14 +70,14 @@ function VelgDate()
                             <h1 className="display-3 pb-5">Velg antall personer</h1>
                             <div className="d-flex justify-content-evenly btn-group align-items-center " role="group" arial-label="Basic radio button group">
                                 {[...Array(11).keys()].map((item, index) => (
-                                    <div>
-                                        <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off" 
+                                    <div key={item+index}>
+                                        <input type="radio" className="btn-check" name="btnradio" id={"btnradio" + index} key="index" autoComplete="off" 
                                             onClick={() => {
                                                 setselectAmountIndex(index);
-                                                const day = new Date(new Date().getTime()+index*86400000)
-                                                setCount(`${day.getDate()}:${('0' + (day.getMonth()+1)).slice(-2)}:${day.getFullYear()}`)
+                                                const day = new Date(new Date().getTime()+index*86400000);
+                                                setCount(`${' ' + day.getFullYear()}-${('0' + (day.getMonth()+1)).slice(-2)}-${day.getDate()}`)
                                             }}></input>
-                                        <label class="btn btn-outline-primary btn-lg" for={"btnradio" + index}>{index}</label>
+                                        <label className="btn btn-outline-primary btn-lg" htmlFor={"btnradio" + index}>{index}</label>
                                     </div>
                                 ))}
                             </div>

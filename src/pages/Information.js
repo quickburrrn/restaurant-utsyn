@@ -18,9 +18,11 @@ function Information()
     {
         const fullnavn = navn.split(' ');
 
+        console.log(count);
+
         axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
-            Dato: `2024-04-${count}`,
+            Dato: count,
             Fornavn: fullnavn[0],
             Etternavn: `${fullnavn.length>0 ? "" : fullnavn[1]}`,
             Telefonnummer: telefonnnumer,
