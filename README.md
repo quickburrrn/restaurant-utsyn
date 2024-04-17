@@ -21,4 +21,5 @@ npm start
 ### hvis noe failer
 ```
 npm install react-router-dom axios react-calendar --force
+npm install react-bootstrap-validation --save --force
 ```

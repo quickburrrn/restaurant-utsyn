@@ -20,7 +20,7 @@ function Information()
 
         axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
-            Dato: `2024-04-${count}`,
+            Dato: count,
             Fornavn: fullnavn[0],
             Etternavn: `${fullnavn.length>0 ? "" : fullnavn[1]}`,
             Telefonnummer: telefonnnumer,
@@ -82,9 +82,12 @@ function Information()
                     <textarea className="form-control-lg" id="extra" rows="3" onChange={handleSetExtra}></textarea>
                 </div>
 
-                <div>
-                    <TestButton color="primary" buttonPressed={() => {commitKvitering()}}>Reserver</TestButton>
-                </div>
+                {telefonnnumer !== "None" && navn !== "None None"? 
+                    
+                    <button type="button" className="btn btn-primary mt-5 px-6 py-2" onClick={commitKvitering}><h4><b>Reserver bord</b></h4></button> : 
+    
+                    <button type="button" className="btn btn-secondary mt-5 px-5 py-2" disabled><h4><b>Reserver</b></h4></button>
+                }
             </form>
         </div>
     );
