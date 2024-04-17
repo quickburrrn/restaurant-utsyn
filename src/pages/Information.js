@@ -18,8 +18,6 @@ function Information()
     {
         const fullnavn = navn.split(' ');
 
-        console.log(count);
-
         axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
             Dato: count,
@@ -84,9 +82,12 @@ function Information()
                     <textarea className="form-control-lg" id="extra" rows="3" onChange={handleSetExtra}></textarea>
                 </div>
 
-                <div>
-                    <TestButton color="primary" buttonPressed={() => {commitKvitering()}}>Reserver</TestButton>
-                </div>
+                {telefonnnumer !== "None" && navn !== "None None"? 
+                    
+                    <button type="button" className="btn btn-primary mt-5 px-6 py-2" onClick={commitKvitering}><h4><b>Reserver bord</b></h4></button> : 
+    
+                    <button type="button" className="btn btn-secondary mt-5 px-5 py-2" disabled><h4><b>Reserver</b></h4></button>
+                }
             </form>
         </div>
     );

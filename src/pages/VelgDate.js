@@ -2,6 +2,7 @@ import NavBar from "../components/Navbar";
 import { Link , useLoaderData, useOutletContext} from "react-router-dom";
 import TestButton from "../components/TestButton";
 import Calendar from "react-calendar";
+import ChoosePersons from "../components/ChoosePersons";
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import './styles.css'
@@ -9,21 +10,27 @@ function VelgDate()
 {
     //`${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}`
 
-    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const day = new Date()
+
+    const weekday = ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Søndag"]
+    const months = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "Oktober", "September", "November", "Desember"]
 
     const [count, setCount] = useOutletContext()[0];
 
-    const [dateActive, setDateActive] = useState(false);
+    const [personer, SetPersoner] = useOutletContext()[1];
 
+
+    //dag valgt
     const [selectIndex, setSelectedIndex] = useState(-1);
 
+    //antall personer valgt
     const [selectAmountIndex, setselectAmountIndex] = useState(-1);
 
-    const setDay = (value) => 
+    const setGuestAmound = (value) => 
     {
-        setDateActive(true);
-        const dato = `${value.getDate()}-${value.getMonth()}-${value.getFullYear()}`;
-        setCount(dato);
+        setselectAmountIndex(value);
+        SetPersoner(value);
+        //ganger med 86400000 fordi det er hvor mange millisekunder i en dag
     };
 
     const daysInMonth = (month, year) =>
@@ -31,71 +38,62 @@ function VelgDate()
         return new Date(year, month, 0).getDate();
     }
 
+    const getFuture = (daysInFuture) => 
+    {
+        //ganger med 86400000 fordi det er antall millisekunder i en dag
+        return new Date(day.getTime()+daysInFuture*86400000)
+    }
+
     return (
         <div className="container text-center">
-            {/* <div className="col mb-2" style={{display: "grid", placeItems: "center"}}>
-                <Calendar className="primary" onChange={setDay}/>
-            </div>
-
-            <div className="col mb-2">
-                <h3>{"Du har valgt " + count}</h3>
-            </div>
-
-            <div className="col mb-2">
-                {dateActive ? 
-                <Link to={`../tid`}><TestButton color="primary" >Veld Tidpunk</TestButton></Link>
-                 : 
-                <TestButton color="secondary disabled">Veld Tidpunk</TestButton>}
-            </div> */} 
+            <h1 className="display-1"><b>{months[day.getMonth()]}</b></h1>
 
             <ul className="list-group list-group-flush">
-                {[...Array(11).keys()].map((item, index) => (
-                    <li className={selectIndex === index ? 'list-group-item' : 'list-group-item'}
-                        key={index}
-                        onClick={() => {
-                            setSelectedIndex(index);
-                            if(selectIndex!==index)
-                            {
-                                setselectAmountIndex(-1);
-                            }
-                        }}
-                    >
-                        <div className="row align-items-center">
-                            <div className="col">
-                                <h1 className="display-2"><b>{(new Date(new Date().getTime()+index*86400000)).getDate()}</b></h1>
-                                <h4 className="">{weekday[(new Date().getDay()+index*86400000).getDate]}</h4>
-                            </div>
-                            <div className="col-8">
-                                <h1 className="ps-5">Masse ledige bord</h1>
-                            </div>
-                            <div className="col">
-                        </div>
+                {[...Array(20).keys()].map((item, index) => (
+                    <>
+                        {getFuture(index).getDate()===1 && <h1 className="display-1"><b>{months[getFuture(index).getMonth()]}</b></h1>}
 
-                        {selectIndex===index && 
-                        <div>
-                            <h1 className="display-3 pb-5">Velg antall personer</h1>
-                            <div className="d-flex justify-content-evenly btn-group align-items-center " role="group" arial-label="Basic radio button group">
-                                {[...Array(11).keys()].map((item, index) => (
-                                    <div key={item+index}>
-                                        <input type="radio" className="btn-check" name="btnradio" id={"btnradio" + index} key="index" autoComplete="off" 
-                                            onClick={() => {
-                                                setselectAmountIndex(index);
-                                                const day = new Date(new Date().getTime()+index*86400000);
-                                                setCount(`${' ' + day.getFullYear()}-${('0' + (day.getMonth()+1)).slice(-2)}-${day.getDate()}`)
-                                            }}></input>
-                                        <label className="btn btn-outline-primary btn-lg" htmlFor={"btnradio" + index}>{index}</label>
-                                    </div>
-                                ))}
+                        <li className={selectIndex === index ? 'list-group-item' : 'list-group-item'}
+                            key={index}
+                            onClick={() => {
+                                setSelectedIndex(index);
+                                if(selectIndex!==index)
+                                {
+                                    setselectAmountIndex(-1);
+                                }
+                                const d = getFuture(index);
+                                setCount(`${' ' + d.getFullYear()}-${('0' + (d.getMonth()+1)).slice(-2)}-${d.getDate()}`)
+                            }}
+                        >
+                            <div className="row align-items-center">
+                                <div className="col">
+                                    <h1 className="display-2"><b>{getFuture(index).getDate()}</b></h1>
+                                    <h4 className="">{weekday[getFuture(index).getDay()]}</h4>
+                                </div>
+                                <div className="col-8">
+                                    <h1 className="ps-5 display-5">Tiljengelig fra 12-14</h1>
+                                </div>
+                                <div className="col">
                             </div>
-                            <Link to={`../informasjon`}><button type="button" className={(selectAmountIndex !== -1 ? 'btn btn-primary' : 'btn btn-secondary') + " mt-5 px-5 py-2"}><h4><b>
-                                {(selectAmountIndex !== -1 ? `Reserver bord til ${selectAmountIndex} presoner` : 'Reserver')}
-                                </b></h4></button></Link>
-                        </div>
-                        }
-                            
-                        </div>                           
-                    </li>
-                ))}
+
+                            {selectIndex===index && 
+                            <div>
+                                <ChoosePersons buttonPressed={setGuestAmound}></ChoosePersons>
+
+                                <Link to={"../informasjon"}>
+                                    {selectAmountIndex !== -1 ? 
+                                        
+                                        <button type="button" className="btn btn-primary mt-5 px-5 py-2"><h4><b>{`Reserver bord til ${selectAmountIndex} presoner`}</b></h4></button> : 
+                        
+                                        <button type="button" className="btn btn-secondary mt-5 px-5 py-2" disabled><h4><b>Reserver</b></h4></button>
+                                    }
+                                </Link>
+                            </div>
+                            }
+                                
+                            </div>                           
+                        </li>
+                    </>))}
             </ul>
 
         </div>
