@@ -6,6 +6,7 @@ import ChoosePersons from "../components/ChoosePersons";
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import './styles.css'
+import Collapse from 'react-bootstrap/Collapse';
 function VelgDate()
 {
     //`${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}`
@@ -76,7 +77,22 @@ function VelgDate()
                                 <div className="col">
                             </div>
 
-                            {selectIndex===index && 
+                            <Collapse in={selectIndex===index}>
+                               <div id="example-collapse-text">
+                                    <ChoosePersons buttonPressed={setGuestAmound}></ChoosePersons>
+
+                                    <Link to={"../informasjon"}>
+                                        {selectAmountIndex !== -1 ? 
+                                            
+                                            <button type="button" className="btn btn-primary mt-5 px-5 py-2"><h4><b>{`Reserver bord til ${selectAmountIndex} presoner`}</b></h4></button> : 
+                            
+                                            <button type="button" className="btn btn-secondary mt-5 px-5 py-2" disabled><h4><b>Reserver</b></h4></button>
+                                        }
+                                    </Link>
+                                </div>
+                            </Collapse>
+
+                            {/* {selectIndex===index && 
                             <div>
                                 <ChoosePersons buttonPressed={setGuestAmound}></ChoosePersons>
 
@@ -89,7 +105,7 @@ function VelgDate()
                                     }
                                 </Link>
                             </div>
-                            }
+                            } */}
                                 
                             </div>                           
                         </li>
