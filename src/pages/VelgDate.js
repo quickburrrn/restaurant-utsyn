@@ -9,6 +9,8 @@ function VelgDate()
 {
     //`${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}`
 
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
     const [count, setCount] = useOutletContext()[0];
 
     const [dateActive, setDateActive] = useState(false);
@@ -24,6 +26,10 @@ function VelgDate()
         setCount(dato);
     };
 
+    const daysInMonth = (month, year) =>
+    {
+        return new Date(year, month, 0).getDate();
+    }
 
     return (
         <div className="container text-center">
@@ -57,7 +63,7 @@ function VelgDate()
                         <div className="row align-items-center">
                             <div className="col">
                                 <h1 className="display-2"><b>{(new Date(new Date().getTime()+index*86400000)).getDate()}</b></h1>
-                                <h4 className="">Tirsdag</h4>
+                                <h4 className="">{weekday[(new Date().getDay()+index*86400000).getDate]}</h4>
                             </div>
                             <div className="col-8">
                                 <h1 className="ps-5">Masse ledige bord</h1>
