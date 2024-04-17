@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './pages/App';
-import Date from './pages/Date';
+import VelgDate from './pages/VelgDate';
 import Information from './pages/Information';
 import Kvitering from './pages/Kvitering';
 import LandingPage from './pages/landingPage';
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'dato',
-        element: <Date />
+        element: <VelgDate />
       },
       {
         path: 'tid',

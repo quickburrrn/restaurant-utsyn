@@ -5,8 +5,10 @@ import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import './styles.css'
-function Date()
+function VelgDate()
 {
+    //`${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}-${(new Date().getTime()+index*86400000).getDate()}`
+
     const [count, setCount] = useOutletContext()[0];
 
     const [dateActive, setDateActive] = useState(false);
@@ -53,7 +55,7 @@ function Date()
                     >
                         <div class="row align-items-center">
                             <div class="col">
-                                <h1 className="display-2"><b>{index}</b></h1>
+                                <h1 className="display-2"><b>{(new Date(new Date().getTime()+index*86400000)).getDate()}</b></h1>
                                 <h4 className="">Tirsdag</h4>
                             </div>
                             <div class="col-8">
@@ -71,7 +73,8 @@ function Date()
                                         <input type="radio" class="btn-check" name="btnradio" id={"btnradio" + index} autocomplete="off" 
                                             onClick={() => {
                                                 setselectAmountIndex(index);
-                                                setCount(index)
+                                                const day = new Date(new Date().getTime()+index*86400000)
+                                                setCount(`${day.getDate()}:${('0' + (day.getMonth()+1)).slice(-2)}:${day.getFullYear()}`)
                                             }}></input>
                                         <label class="btn btn-outline-primary btn-lg" for={"btnradio" + index}>{index}</label>
                                     </div>
@@ -92,4 +95,4 @@ function Date()
     );
 };
 
-export default Date;
+export default VelgDate;
