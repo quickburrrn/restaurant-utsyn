@@ -72,7 +72,7 @@ function Information()
             <form className="row align-items-center">
                 <div className="form-group m-4 row">
                     <label htmlFor="exampleInputEmail1"><h2 className="display-5">Fult navn*</h2></label>
-                    <input type="email" className="form-control-lg" id="name" aria-describedby="emailHelp" placeholder="Skriv fult navn" onChange={handleSetName}/>
+                    <input type="text" className="form-control-lg" id="name" aria-describedby="emailHelp" placeholder="Skriv fult navn" onChange={handleSetName}/>
                 </div>
                 
                 <div className="form-group m-4 row">
@@ -82,7 +82,7 @@ function Information()
 
                 <div className="form-group m-4 row">
                     <label htmlFor="email"><h2 className="display-5">Email</h2></label>
-                    <input type="email" className="form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Skriv email adresse" onChange={handleSetEmail}/>
+                    <input type="text" className="form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Skriv email adresse" onChange={handleSetEmail}/>
                 </div>
                 
                 <div className="form-group m-4 row">
