@@ -16,19 +16,27 @@ function Information()
 
     const commitKvitering = () => 
     {
-        const fullnavn = navn.split(' ');
+        const fullnavn = navn.split(" ");
+
+        console.log({
+            Dato: count,
+            Fornavn: fullnavn[0],
+            Etternavn: `${fullnavn.length>0 ? fullnavn[1] : 'None'}`,
+            Telefonnummer: telefonnnumer,
+            Epost: email,
+            ExtraInfo: extra
+        })
 
         axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
             Dato: count,
             Fornavn: fullnavn[0],
-            Etternavn: `${fullnavn.length>0 && fullnavn[1]}`,
+            Etternavn: `${fullnavn.length>0 ? fullnavn[1] : 'None'}`,
             Telefonnummer: telefonnnumer,
             Epost: email,
             ExtraInfo: extra
         })
-        .then(res => {
-            axios.get('https://restaurant-utsyn-api.vercel.app/reservasjoner').then(function (responce){console.log(responce.data)})})
+        .then(res => {axios.get('https://restaurant-utsyn-api.vercel.app/reservasjoner').then(function (responce){console.log(responce.data)});})
         .catch(err => console.log("err"));
 
         navigate('../kvitering');
