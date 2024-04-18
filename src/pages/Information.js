@@ -10,7 +10,7 @@ function Information()
     const [count, setCount] = useOutletContext()[0];
     const [personer, SetPersoner] = useOutletContext()[1];
     const [navn, setNavn] = useOutletContext()[2];
-    const [telefonnnumer, setTelefonnnumer] = useOutletContext()[4];
+    const [telefonnnumer, setTelefonnnumer] = useOutletContext()[3];
     const [email, setEmail] = useOutletContext()[4];
     const [extra, setExtra] = useOutletContext()[5];
 
@@ -20,6 +20,7 @@ function Information()
 
         console.log({
             Dato: count,
+            Antall_gjester: personer,
             Fornavn: fullnavn[0],
             Etternavn: `${fullnavn.length>0 ? fullnavn[1] : 'None'}`,
             Telefonnummer: telefonnnumer,
@@ -30,6 +31,7 @@ function Information()
         axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
         {
             Dato: count,
+            Antall_gjester: personer,
             Fornavn: fullnavn[0],
             Etternavn: `${fullnavn.length>0 ? fullnavn[1] : 'None'}`,
             Telefonnummer: telefonnnumer,
@@ -72,17 +74,17 @@ function Information()
             <form className="row align-items-center">
                 <div className="form-group m-4 row">
                     <label htmlFor="exampleInputEmail1"><h2 className="display-5">Fult navn*</h2></label>
-                    <input type="text" className="form-control-lg" id="name" aria-describedby="emailHelp" placeholder="Skriv fult navn" onChange={handleSetName}/>
+                    <input type="text" className="form-control-lg" id="name" placeholder="Skriv fult navn" onChange={handleSetName}/>
                 </div>
                 
                 <div className="form-group m-4 row">
                     <label htmlFor="email"><h2 className="display-5">Telefonnummer*</h2></label>
-                    <input type="email" className="form-control-lg" id="phone" aria-describedby="emailHelp" placeholder="12345678" onChange={handleSetTelefonnnumer}/>
+                    <input type="email" className="form-control-lg" id="phone" placeholder="12345678" onChange={handleSetTelefonnnumer}/>
                 </div>
 
                 <div className="form-group m-4 row">
                     <label htmlFor="email"><h2 className="display-5">Email</h2></label>
-                    <input type="text" className="form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Skriv email adresse" onChange={handleSetEmail}/>
+                    <input type="text" className="form-control-lg" id="email" placeholder="Skriv email adresse" onChange={handleSetEmail}/>
                 </div>
                 
                 <div className="form-group m-4 row">
@@ -92,7 +94,7 @@ function Information()
 
                 {telefonnnumer !== "None" && navn !== "None None"? 
                     
-                    <button type="button" className="btn btn-primary mt-5 px-6 py-2" onClick={commitKvitering}><h4><b>Reserver bord</b></h4></button> : 
+                    <button type="button" className="btn btn-primary mt-5 px-6 py-2" onClick={() =>     commitKvitering()}><h4><b>Reserver bord</b></h4></button> : 
     
                     <button type="button" className="btn btn-secondary mt-5 px-5 py-2" disabled><h4><b>Reserver</b></h4></button>
                 }
