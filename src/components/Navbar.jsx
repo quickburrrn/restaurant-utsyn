@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tangenlogo from '../images/tangenlogo.png';
+import './../pages/styles.css'
 
 const Header = (Props) => 
 {
@@ -12,7 +13,7 @@ const Header = (Props) =>
                 <h1 className="display-2 text-secondary text-center">Resturant-Utsyn</h1>
             </div>
             <div className="row">
-                <nav className="navbar navbar-expand-lg justify-content-evenly">
+                <nav className="navbar justify-content-center">
                     <ul className="nav nav-underline">
                         <li className="nav-item px-5">
                             <h2><Link className="nav-link active" aria-current="page" to=''>Reserver bord</Link></h2>
