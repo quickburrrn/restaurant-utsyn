@@ -3,3 +3,11 @@
     border-style: solid;
     border-color: black;
 }
+
+
+@media (max-width: 576px)
+{
+    .btn{
+        font-size: 15px;
+    }
+}
