@@ -29,7 +29,9 @@
     
     .display-5
     {
-        font-size: 1.2em;
+        text-align: center;
+        white-space: pre;
+        font-size: 2em;
     }
 
     .display-3
