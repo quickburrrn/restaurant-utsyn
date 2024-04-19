@@ -8,6 +8,8 @@
 @media (max-width: 576px)
 {
     .btn{
+        text-align: center;
+        margin: auto;
         font-size: 15px;
     }
 }
