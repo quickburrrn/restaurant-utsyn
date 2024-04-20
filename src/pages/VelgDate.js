@@ -67,14 +67,14 @@ function VelgDate()
                             }}
                         >
                             <div className="row align-items-center">
-                                <div className="col-1">
+                                <div className="col-2">
                                     <h1 className="display-2"><b>{getFuture(index).getDate()}</b></h1>
                                     <h4 className="">{weekday[getFuture(index).getDay()]}</h4>
                                 </div>
-                                <div className="col-9">
-                                    <h1 className="ps-5 display-5">Tiljengelig fra 12-14</h1>
+                                <div className="col-8">
+                                    <h1 className="ps-5 display-5"><b>Tiljengelig fra 12-14</b></h1>
                                 </div>
-                                <div className="col-1">
+                                <div className="col-2">
                             </div>
 
                             <Collapse in={selectIndex===index}>
