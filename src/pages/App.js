@@ -17,7 +17,6 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <div>
         <Outlet context={[[count, setCount], [personer, setPersoner], [navn, setNavn], [telefonnnumer, setTelefonnnumer], [email, setEmail], [extra, setExtra]]}/>
       </div>
