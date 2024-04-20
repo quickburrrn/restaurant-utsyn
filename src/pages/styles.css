@@ -7,7 +7,8 @@
 #test
 {
     /* background-color: blue;
-    padding: 100px; */
+    flex-wrap: wrap; */
+    /* padding: 100px; */
 }
 
 @media (max-width: 576px)
@@ -24,18 +25,10 @@
         margin: 0;
         padding: 0;
     } */
-
-    .px-5{
-        padding-left: 0.5em !important;
-        padding-right: 0.5em !important;
-        /* padding-left: (spacer * .5) !important;
-        padding-right: (spacer * .5) !important; */
-    }
     
     .display-5
     {
         text-align: center;
-        white-space: pre;
         font-size: 1.5em;
     }
 
