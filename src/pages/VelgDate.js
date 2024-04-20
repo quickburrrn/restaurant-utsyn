@@ -79,7 +79,7 @@ function VelgDate()
 
                             <Collapse in={selectIndex===index}>
                                <div id="example-collapse-text">
-                                    <ChoosePersons buttonPressed={setGuestAmound}></ChoosePersons>
+                                    <ChoosePersons buttonPressed={setGuestAmound} worldIndex={index}></ChoosePersons>
 
                                     <Link to={"../informasjon"}>
                                         {selectAmountIndex !== -1 ? 
