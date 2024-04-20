@@ -10,10 +10,10 @@ const ChoosePersons = (props) =>
 
     return(
         <>
-            <h1 className="display-3 pb-5"><b>Velg antall personer</b></h1>
-            <div className="row row-cols-sm-3 row-cols-md-1 row-cols-lg-1 justify-content-center gx-2 gy-5" role="group" arial-label="button group">
+            {/* <h1 className="display-3 pb-5"><b>Velg antall personer</b></h1> */}
+            <div className="row justify-content-center gx-1 gy-4" role="group" arial-label="button group">
                 {array.map((item, index) => (
-                    <div key={item+index} className="col mb-3">
+                    <div key={item+index} className="col">
                         <input className="btn-check" name="btnradio" id={"btnradio" + item + worldIndex} key="index"
                             onClick={() => {
                                 buttonPressed(item);
