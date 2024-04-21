@@ -33,6 +33,14 @@
     /* padding: 100px; */
 }
 
+/* Footer */
+.footer
+{
+    background-color: rgb(56, 46, 46);
+    border-style: solid;
+    border-color: rgb(56, 46, 46);
+    color: rgb(209, 204, 204);
+}
 
 /* Scaling */
 
