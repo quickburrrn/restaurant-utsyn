@@ -3,7 +3,7 @@ import { Link , useLoaderData, useOutletContext} from "react-router-dom";
 import TestButton from "../components/TestButton";
 import Calendar from "react-calendar";
 import ChoosePersons from "../components/ChoosePersons";
-import 'react-calendar/dist/Calendar.css';
+//import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import './styles.css'
 import Collapse from 'react-bootstrap/Collapse';

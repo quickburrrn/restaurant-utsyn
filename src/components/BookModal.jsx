@@ -9,13 +9,24 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Button from 'react-bootstrap/Button';
 import { Link , useLoaderData, useOutletContext} from "react-router-dom";
 import Calendar from "react-calendar";
+import Form from 'react-bootstrap/Form'
 
 
 const BookModal = (props) => 
 {
     const {page, setPage = (index) => {return;}} = props; 
+    const [selectedDay, setSelectedDay] = useState(new Date())
 
+
+    const [count, setCount] = useOutletContext()[0];
     const [personer, SetPersoner] = useOutletContext()[1];
+
+    const [navn, setNavn] = useOutletContext()[2];
+    const [telefonnnumer, setTelefonnnumer] = useOutletContext()[3];
+    const [email, setEmail] = useOutletContext()[4];
+    const [extra, setExtra] = useOutletContext()[5];
+    const [etternavn, setEtternavn] = useOutletContext()[6];
+
 
     const [error, setError] = useState(false);
 
@@ -38,7 +49,7 @@ const BookModal = (props) =>
             <Modal
                 show={page===0}
                 centered
-                onHide={() => {setPage(-1); SetPersoner(0)}}
+                onHide={() => {setPage(-1);}}
             >
                 <Modal.Header>
                     <Modal.Title>Velg Antall folk</Modal.Title>
@@ -46,15 +57,18 @@ const BookModal = (props) =>
 
                 <Modal.Body className="modal-content">
                     {error && <label className='text-danger'>Du må velge et antall personer</label>}
-                    <ToggleButtonGroup type="radio" name="options">
+                    <ToggleButtonGroup type="radio" name="options" value={personer}>
                         {radios.map((radio, idx) => (
                             <ToggleButton
-                                key={idx}
+                                key={radio.value}
                                 id={`radio-${idx}`}
                                 variant={'outline-dark'}
                                 value={radio.value}
-                                checked={radio.value === personer}
-                                onChange={(e) => {SetPersoner(e.currentTarget.value); setError(false)}}
+                                onChange={(e) => {
+                                    SetPersoner(Number(e.currentTarget.value)); 
+                                    setError(false);     
+                                    console.log(personer)                           
+                                }}
                             >
                                 {radio.name}
                             </ToggleButton>
@@ -75,7 +89,7 @@ const BookModal = (props) =>
             <Modal
                 show={page===1}
                 centered
-                onHide={() => {setPage(-1); SetPersoner(0)}}
+                onHide={() => {setPage(-1);}}
             >
 
                 <Modal.Header>
@@ -84,17 +98,123 @@ const BookModal = (props) =>
 
                 <Modal.Body>
                     <div style={{display: "grid", placeItems: "center"}}>
-                        <Calendar />
+                        <Calendar value={selectedDay} tileDisabled={({date}) => [1, 2, 3, 6, 0].includes(date.getDay())} onClickDay={(value, event) => {
+                            setCount(`${' ' + value.getFullYear()}-${('0' + (value.getMonth()+1)).slice(-2)}-${value.getDate()}`);
+                            setSelectedDay(value)
+                            setError(false)
+                            }}/>
                     </div>
+                    {error && <label className='text-danger'>Du må velge en dato først</label>}
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button variant="primary" onClick={() => setPage(0)}>Tilbake</Button>
                     
-                    {personer <= 0 ?
+                    {count === '00:00:00' ?
                         <Button variant="secondary" onClick={() => setError(true)}>Neste</Button> :
-                        <Button variant="primary" onClick={() => setPage(1)}>Neste</Button>
+                        <Button variant="primary" onClick={() => setPage(2)}>Neste</Button>
                     }
+                </Modal.Footer>
+
+            </Modal>
+
+            <Modal
+                show={page===2}
+                centered
+                onHide={() => {setPage(-1);}}
+            >
+
+                <Modal.Header>
+                        <Modal.Title>Informasjon</Modal.Title>
+                    </Modal.Header>        
+
+                <Modal.Body>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="fornavn" onChange={(value) => {setNavn(value.target.value); setError(false)}}>
+                            {(error && navn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            <Form.Label>Fornavn *</Form.Label>
+                            <Form.Control type="text" placeholder="navn" value={navn !== '...' ? navn : ''}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="etternavn" onChange={(value) => {setEtternavn(value.target.value); setError(false)}}>
+                        {(error && etternavn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            <Form.Label>Etternavn *</Form.Label>
+                            <Form.Control type="text" placeholder="etternavn" value={etternavn !== '...' ? etternavn : ''}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="telefonummer" onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}>
+                        {(error && telefonnnumer === 12345678) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            <Form.Label>Telefonummer * (valgfritt)</Form.Label>
+                            <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== '...' ? telefonnnumer : ''}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="E-post" onChange={(value) => setEmail(value.target.value)}>
+                            <Form.Label>E-post (valgfritt)</Form.Label>
+                            <Form.Control type="E-post" placeholder="Dinn E-post" value={email !== '...' ? email : ''}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="extra" onChange={(value) => setExtra(value.target.value)}>
+                            <Form.Label>Extra informasjon (valgfritt)</Form.Label>
+                            <Form.Control as="textarea" rows={3} value={extra !== '...' ? extra : ''}/>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="primary" onClick={() => setPage(1)}>Tilbake</Button>
+                    
+                    {telefonnnumer === 12345678 || navn === "..." || etternavn === "..."?
+                        <Button variant="secondary" onClick={() => setError(true)}>Neste</Button> :
+                        <Button variant="primary" onClick={() => {setPage(3);}}>Neste</Button>
+                    }
+                </Modal.Footer>
+
+            </Modal>
+
+            <Modal
+                show={page===3}
+                centered
+                onHide={() => {setPage(-1);}}
+            >
+                <Modal.Header>
+                    <Modal.Title>Verifiser informasjon</Modal.Title>
+                </Modal.Header>        
+
+                <Modal.Body className="modal-content">
+                    <p><strong>Navn:</strong> {navn+" "+etternavn} </p>
+                    <p><strong>Antall gjester:</strong> {personer}</p>
+                    <p><strong>Valge Dato:</strong> {count}</p>
+                    <p><strong>Telefonummer:</strong> {telefonnnumer}</p>
+                    {email.length > 0 && <p><strong>E-post:</strong> {email}</p>}
+                    {extra.length > 0 && <p><strong>Ekstra:</strong> {extra}</p>}
+                </Modal.Body>
+
+                <Modal.Footer>                    
+                    <Button variant="primary" onClick={() => setPage(2)}>Tilbake</Button>
+                    
+                    {personer <= 0 ?
+                        <Button variant="secondary" onClick={() => {setError(true);}}>Neste</Button> :
+                        <Button variant="success" onClick={() => setPage(4)}><b>Reserver Bord</b></Button>
+                    }
+                </Modal.Footer>
+
+            </Modal>
+
+            <Modal
+                show={page===4}
+                centered
+                onHide={() => {setPage(-1);}}
+            >
+                <Modal.Header>
+                    <Modal.Title>Bordet er reservert</Modal.Title>
+                </Modal.Header>        
+
+                <Modal.Body className="modal-content">
+                    <p>Da er det vare å komme her {count} fra klokken 12-14</p>
+                </Modal.Body>
+
+                <Modal.Footer>                    
+                    <Button variant="primary" onClick={() => setPage(2)}>lukk</Button>
                 </Modal.Footer>
 
             </Modal>
