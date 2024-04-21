@@ -6,7 +6,7 @@ import App from './pages/App';
 import VelgDate from './pages/VelgDate';
 import Information from './pages/Information';
 import Kvitering from './pages/Kvitering';
-import LandingPage from './pages/landingPage';
+import LandingPage from './pages/LandingPage';
 import Meny from './pages/Meny';
 import NotFoundPage from './pages/NotFoundPage';
 import Persons from './pages/Persons';
