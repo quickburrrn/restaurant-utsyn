@@ -13,35 +13,6 @@ import Form from 'react-bootstrap/Form'
 import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
 
-// async function sendReservasjon(c, p, f, e, t, em, ex)
-// {
-//     console.log("hello")
-//     try
-//     {
-//         const response = axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
-//         {
-//             Dato: c,
-//             Antall_gjester: p,
-//             Fornavn: f,
-//             Etternavn: e,
-//             Telefonnummer: t,
-//             Epost: em,
-//             ExtraInfo: ex
-//         });
-
-//         if (response.status >= 200 && response.status > 300)
-//         {
-//             console.log('sende reservasjon')
-//             console.log(response.data);
-//         }
-
-//         return (await response).data
-
-//     } catch (error) {
-//         console.log("error")
-//     };
-// }
-
 const BookModal = (props) => 
 {
     const {page, setPage = (index) => {return;}} = props; 
@@ -185,29 +156,29 @@ const BookModal = (props) =>
                         <Form.Group className="mb-3" controlId="fornavn" >
                             {(error && navn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Fornavn *</Form.Label>
-                            <Form.Control type="text" placeholder="navn" value={navn !== '...' ? navn : ''} onChange={(value) => {setNavn(value.target.value); setError(false)}}/>
+                            <Form.Control type="text" placeholder="navn" value={navn !== '' ? navn : ''} onChange={(value) => {setNavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="etternavn" >
-                        {(error && etternavn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            {(error && etternavn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Etternavn *</Form.Label>
-                            <Form.Control type="text" placeholder="etternavn" value={etternavn !== '...' ? etternavn : '' } onChange={(value) => {setEtternavn(value.target.value); setError(false)}}/>
+                            <Form.Control type="text" placeholder="etternavn" value={etternavn !== '' ? etternavn : '' } onChange={(value) => {setEtternavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="telefonummer" >
-                        {(error && telefonnnumer === 12345678) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            {(error && telefonnnumer === 12345678) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Telefonummer * (valgfritt)</Form.Label>
                             <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== 12345678 ? telefonnnumer : ''} onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="E-post" >
                             <Form.Label>E-post (valgfritt)</Form.Label>
-                            <Form.Control type="E-post" placeholder="Dinn E-post" value={email !== '...' ? email : ''} onChange={(value) => setEmail(value.target.value)}/>
+                            <Form.Control type="E-post" placeholder="Dinn E-post" value={email !== '' ? email : ''} onChange={(value) => setEmail(value.target.value)}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="extra" >
                             <Form.Label>Extra informasjon (valgfritt)</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={extra !== '...' ? extra : ''} onChange={(value) => setExtra(value.target.value)}/>
+                            <Form.Control as="textarea" rows={3} value={extra !== '' ? extra : ''} onChange={(value) => setExtra(value.target.value)}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -215,7 +186,7 @@ const BookModal = (props) =>
                 <Modal.Footer>
                     <Button variant="primary" onClick={() => setPage(1)}>Tilbake</Button>
                     
-                    {telefonnnumer === 12345678 || navn === "..." || etternavn === "..."?
+                    {telefonnnumer === 12345678 || navn === "" || etternavn === ""?
                         <Button variant="secondary" onClick={() => setError(true)}>Neste</Button> :
                         <Button variant="primary" onClick={() => {setPage(3);}}>Neste</Button>
                     }
