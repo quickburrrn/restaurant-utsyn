@@ -277,7 +277,7 @@ const BookModal = (props) =>
                 </Modal.Body>
 
                 <Modal.Footer>     
-                    {!loading && <Button variant="primary" onClick={() => setPage(2)}>lukk</Button>}               
+                    {!loading && <Button variant="primary" onClick={() => {setPage(-1);}}>lukk</Button>}               
                 </Modal.Footer>
 
             </Modal>
