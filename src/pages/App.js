@@ -11,7 +11,7 @@ function App() {
   //const [ankomst, setAnkomst] = useState("00:00");
   const [personer, setPersoner] = useState(0)
   const [navn, setNavn] = useState("")
-  const [telefonnnumer, setTelefonnnumer] = useState(12345678)
+  const [telefonnnumer, setTelefonnnumer] = useState(0)
   const [email, setEmail] = useState("")
   const [extra, setExtra] = useState("")
   const [etternavn, setEtternavn] = useState('')

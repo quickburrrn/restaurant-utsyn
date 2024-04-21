@@ -154,21 +154,21 @@ const BookModal = (props) =>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="fornavn" >
-                            {(error && navn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            {(error && navn === "") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Fornavn *</Form.Label>
                             <Form.Control type="text" placeholder="navn" value={navn !== '' ? navn : ''} onChange={(value) => {setNavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="etternavn" >
-                            {(error && etternavn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            {(error && etternavn === "") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Etternavn *</Form.Label>
                             <Form.Control type="text" placeholder="etternavn" value={etternavn !== '' ? etternavn : '' } onChange={(value) => {setEtternavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="telefonummer" >
-                            {(error && telefonnnumer === 12345678) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
+                            {(error && telefonnnumer === 0) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Telefonummer * (valgfritt)</Form.Label>
-                            <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== 12345678 ? telefonnnumer : ''} onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}/>
+                            <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== 0 ? telefonnnumer : ''} onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="E-post" >
@@ -186,7 +186,7 @@ const BookModal = (props) =>
                 <Modal.Footer>
                     <Button variant="primary" onClick={() => setPage(1)}>Tilbake</Button>
                     
-                    {telefonnnumer === 12345678 || navn === "" || etternavn === ""?
+                    {telefonnnumer === 0 || navn === "" || etternavn === ""?
                         <Button variant="secondary" onClick={() => setError(true)}>Neste</Button> :
                         <Button variant="primary" onClick={() => {setPage(3);}}>Neste</Button>
                     }
