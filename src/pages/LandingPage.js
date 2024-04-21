@@ -4,6 +4,10 @@ import TestButton from "../components/TestButton";
 import bilde1 from "../images/bilde1.jpeg";
 import bilde2 from "../images/bilde2.jpeg";
 import Forrett from "../images/Forrett.jpg";
+import bilde3 from "../images/bilde3.jpeg";
+import bilde4 from "../images/bilde4.jpeg";
+import bilde5 from "../images/bilde5.jpeg";
+
 import {Carousel} from "react-bootstrap";
 import BookModal from "../components/BookModal";
 import './styles.css';
@@ -28,6 +32,15 @@ function LandingPage()
           </Carousel.Item>
           <Carousel.Item>
             <img className="d-block w-100 carousel-image" src={Forrett} alt="Bilde"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100 carousel-image" src={bilde3} alt="Bilde"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100 carousel-image" src={bilde4} alt="Bilde"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100 carousel-image" src={bilde5} alt="Bilde"/>
           </Carousel.Item>
         </Carousel>
         <div className="carosel-text">
