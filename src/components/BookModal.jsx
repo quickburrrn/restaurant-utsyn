@@ -10,7 +10,37 @@ import Button from 'react-bootstrap/Button';
 import { Link , useLoaderData, useOutletContext} from "react-router-dom";
 import Calendar from "react-calendar";
 import Form from 'react-bootstrap/Form'
+import Spinner from 'react-bootstrap/Spinner';
+import axios from 'axios';
 
+// async function sendReservasjon(c, p, f, e, t, em, ex)
+// {
+//     console.log("hello")
+//     try
+//     {
+//         const response = axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
+//         {
+//             Dato: c,
+//             Antall_gjester: p,
+//             Fornavn: f,
+//             Etternavn: e,
+//             Telefonnummer: t,
+//             Epost: em,
+//             ExtraInfo: ex
+//         });
+
+//         if (response.status >= 200 && response.status > 300)
+//         {
+//             console.log('sende reservasjon')
+//             console.log(response.data);
+//         }
+
+//         return (await response).data
+
+//     } catch (error) {
+//         console.log("error")
+//     };
+// }
 
 const BookModal = (props) => 
 {
@@ -27,7 +57,7 @@ const BookModal = (props) =>
     const [extra, setExtra] = useOutletContext()[5];
     const [etternavn, setEtternavn] = useOutletContext()[6];
 
-
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false);
 
     const radios = 
@@ -43,6 +73,28 @@ const BookModal = (props) =>
         {name: '9', value: 9},
         {name: '10', value: 10}
     ]
+
+    const sendReservasjon = async () => {
+    
+        const response = await axios.post('https://restaurant-utsyn-api.vercel.app/reservasjon',
+        {
+            Dato: count,
+            Antall_gjester: personer,
+            Fornavn: navn,
+            Etternavn: etternavn,
+            Telefonnummer: telefonnnumer,
+            Epost: email,
+            ExtraInfo: extra
+        }
+    
+    ).then(res => {
+            setLoading(false)
+            if (res.data === "err") 
+            {
+                setError(true)
+            }
+        })
+    };
 
     return(
         <>
@@ -130,32 +182,32 @@ const BookModal = (props) =>
 
                 <Modal.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="fornavn" onChange={(value) => {setNavn(value.target.value); setError(false)}}>
+                        <Form.Group className="mb-3" controlId="fornavn" >
                             {(error && navn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Fornavn *</Form.Label>
-                            <Form.Control type="text" placeholder="navn" value={navn !== '...' ? navn : ''}/>
+                            <Form.Control type="text" placeholder="navn" value={navn !== '...' ? navn : ''} onChange={(value) => {setNavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="etternavn" onChange={(value) => {setEtternavn(value.target.value); setError(false)}}>
+                        <Form.Group className="mb-3" controlId="etternavn" >
                         {(error && etternavn === "...") && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Etternavn *</Form.Label>
-                            <Form.Control type="text" placeholder="etternavn" value={etternavn !== '...' ? etternavn : ''}/>
+                            <Form.Control type="text" placeholder="etternavn" value={etternavn !== '...' ? etternavn : '' } onChange={(value) => {setEtternavn(value.target.value); setError(false)}}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="telefonummer" onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}>
+                        <Form.Group className="mb-3" controlId="telefonummer" >
                         {(error && telefonnnumer === 12345678) && <><label className="text-danger">Venlist fyll ut forrnavn</label><br /></>}
                             <Form.Label>Telefonummer * (valgfritt)</Form.Label>
-                            <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== '...' ? telefonnnumer : ''}/>
+                            <Form.Control type="tel" placeholder="12345678" value={telefonnnumer !== 12345678 ? telefonnnumer : ''} onChange={(value) => {setTelefonnnumer(value.target.value); setError(false)}}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="E-post" onChange={(value) => setEmail(value.target.value)}>
+                        <Form.Group className="mb-3" controlId="E-post" >
                             <Form.Label>E-post (valgfritt)</Form.Label>
-                            <Form.Control type="E-post" placeholder="Dinn E-post" value={email !== '...' ? email : ''}/>
+                            <Form.Control type="E-post" placeholder="Dinn E-post" value={email !== '...' ? email : ''} onChange={(value) => setEmail(value.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="extra" onChange={(value) => setExtra(value.target.value)}>
+                        <Form.Group className="mb-3" controlId="extra" >
                             <Form.Label>Extra informasjon (valgfritt)</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={extra !== '...' ? extra : ''}/>
+                            <Form.Control as="textarea" rows={3} value={extra !== '...' ? extra : ''} onChange={(value) => setExtra(value.target.value)}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -194,7 +246,9 @@ const BookModal = (props) =>
                     
                     {personer <= 0 ?
                         <Button variant="secondary" onClick={() => {setError(true);}}>Neste</Button> :
-                        <Button variant="success" onClick={() => setPage(4)}><b>Reserver Bord</b></Button>
+                        <Button variant="success" onClick={() => {
+                            setPage(4); 
+                            console.log(sendReservasjon())}}><b>Reserver Bord</b></Button>
                     }
                 </Modal.Footer>
 
@@ -204,17 +258,26 @@ const BookModal = (props) =>
                 show={page===4}
                 centered
                 onHide={() => {setPage(-1);}}
+                backdrop="static"
             >
                 <Modal.Header>
-                    <Modal.Title>Bordet er reservert</Modal.Title>
+                    {loading ? 
+                        <Modal.Title>Reserverer bord</Modal.Title> :
+
+                        <Modal.Title>{error ? "beklager noe gikk galt" : "Et bord er Reservert til dere"}</Modal.Title>
+                    }
                 </Modal.Header>        
 
                 <Modal.Body className="modal-content">
-                    <p>Da er det vare å komme her {count} fra klokken 12-14</p>
+                    {loading ? 
+                        <Spinner animation="border" size="lg"/> :
+
+                        <p>{error ? "Beklager så mye prøv på nytt senere" : `Da er det vare å komme her ${count} fra klokken 12-14`}</p>
+                    }
                 </Modal.Body>
 
-                <Modal.Footer>                    
-                    <Button variant="primary" onClick={() => setPage(2)}>lukk</Button>
+                <Modal.Footer>     
+                    {!loading && <Button variant="primary" onClick={() => setPage(2)}>lukk</Button>}               
                 </Modal.Footer>
 
             </Modal>
